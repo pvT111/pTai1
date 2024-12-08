@@ -13,7 +13,7 @@ function renderTours() {
       <td>${tour.destination}</td>
       <td>${tour.duration} ngày</td>
       <td>${tour.price.toLocaleString('vi-VN')} VNĐ</td>
-      <td>${tour.startDate}</td>
+      <td>${tour.description}</td> <!-- Thêm mô tả -->
       <td>
         <button class="action-btn edit-btn" onclick="editTour(${index})">Sửa</button>
         <button class="action-btn delete-btn" onclick="deleteTour(${index})">Xóa</button>
@@ -37,13 +37,13 @@ document.getElementById('tourForm').addEventListener('submit', function (e) {
     destination: document.getElementById('destination').value,
     duration: parseInt(document.getElementById('duration').value),
     price: parseInt(document.getElementById('price').value),
-    startDate: document.getElementById('startDate').value,
+    description: document.getElementById('description').value, // Thêm mô tả
   };
 
   if (editIndex >= 0) {
-    tours[editIndex] = tour;
+    tours[editIndex] = tour; // Chỉnh sửa tour
   } else {
-    tours.push(tour);
+    tours.push(tour); // Thêm mới tour
   }
 
   renderTours();
@@ -53,8 +53,9 @@ document.getElementById('tourForm').addEventListener('submit', function (e) {
 // Xóa thông tin tour
 function deleteTour(index) {
   if (confirm('Bạn có chắc chắn muốn xóa không?')) {
-    tours.splice(index, 1);
+    tours.splice(index, 1); // Xóa tour tại vị trí index
     renderTours();
+    cancelForm();
   }
 }
 
@@ -65,7 +66,7 @@ function editTour(index) {
   document.getElementById('destination').value = tour.destination;
   document.getElementById('duration').value = tour.duration;
   document.getElementById('price').value = tour.price;
-  document.getElementById('startDate').value = tour.startDate;
+  document.getElementById('description').value = tour.description; // Hiển thị mô tả khi sửa
 
   editIndex = index;
   document.getElementById('formContainer').style.display = 'block';
