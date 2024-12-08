@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Tour Du Lịch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Container chính -->
+  <div class="container">
+    <!-- Tiêu đề chính -->
+    <h1>Quản lý Tour Du Lịch</h1>
+
+    <!-- Nút Thêm tour mới -->
+    <div class="action-buttons">
+      <button onclick="showAddForm()">Thêm Tour</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Tên tour</th>
+          <th>Điểm đến</th>
+          <th>Thời gian (ngày)</th>
+          <th>Giá tour (VNĐ)</th>
+          <th>Ngày bắt đầu</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="tourList"></tbody>
+    </table>
+    <div id="formContainer" style="display:none;">
+      <form id="tourForm">
+        <input type="text" id="tourName" placeholder="Tên tour" required>
+        <input type="text" id="destination" placeholder="Điểm đến" required>
+        <input type="number" id="duration" placeholder="Thời gian (ngày)" required>
+        <input type="number" id="price" placeholder="Giá tour (VNĐ)" required>
+        <input type="date" id="startDate" placeholder="Ngày bắt đầu" required>
+        <button type="submit">Lưu thông tin</button>
+        <button type="button" onclick="cancelForm()">Hủy</button>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
