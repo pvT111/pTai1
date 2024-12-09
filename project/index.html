@@ -1,51 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý Tour Du Lịch</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Quản lý Tour Du Lịch</h1>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-umbrella-beach"></i>
+                <span>Tour Admin</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li class="active">
+                        <i class="fas fa-route"></i>
+                        <span>Tour Management</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
-    <!-- Nút Thêm tour mới -->
-    <div class="action-buttons">
-      <button onclick="showAddForm()">Thêm Tour</button>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Tour Management</h1>
+                <button id="addTourBtn" class="btn-primary">
+                    <i class="fas fa-plus"></i> Add New Tour
+                </button>
+            </div>
+
+            <!-- Tour List -->
+            <div class="tour-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tour Name</th>
+                            <th>Destination</th>
+                            <th>Duration</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tourTableBody">
+                        <!-- Tour data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <!-- Bảng danh sách tour -->
-    <table>
-      <thead>
-        <tr>
-          <th>Tên tour</th>
-          <th>Điểm đến</th>
-          <th>Thời gian (ngày)</th>
-          <th>Giá tour (VNĐ)</th>
-          <th>Mô tả</th> <!-- Mô tả -->
-          <th>Thao tác</th>
-        </tr>
-      </thead>
-      <tbody id="tourList">
-        <!-- Dữ liệu tour sẽ được hiển thị tại đây -->
-      </tbody>
-    </table>
-
-    <!-- Form thêm/sửa tour -->
-    <div id="formContainer" style="display:none;">
-      <form id="tourForm">
-        <input type="text" id="tourName" placeholder="Tên tour" required>
-        <input type="text" id="destination" placeholder="Điểm đến" required>
-        <input type="number" id="duration" placeholder="Thời gian (ngày)" required>
-        <input type="number" id="price" placeholder="Giá tour (VNĐ)" required>
-        <textarea id="description" placeholder="Mô tả tour" required></textarea> <!-- Mô tả -->
-        <button type="submit">Lưu thông tin</button>
-        <button type="button" onclick="cancelForm()">Hủy</button>
-      </form>
+    <!-- Modal -->
+    <div id="tourModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Tour</h2>
+            <form id="tourForm">
+                <div class="form-group">
+                    <label for="tourName">Tour Name:</label>
+                    <input type="text" id="tourName" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination:</label>
+                    <input type="text" id="destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration (days):</label>
+                    <input type="number" id="duration" required min="1">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price ($):</label>
+                    <input type="number" id="price" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" required rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tourImage">Tour Image:</label>
+                    <input type="file" id="tourImage" accept="image/*">
+                    <img id="imagePreview" class="image-preview" style="display: none;">
+                </div>
+                <button type="submit" class="btn-primary">Save</button>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
