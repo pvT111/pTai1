@@ -147,3 +147,15 @@ window.deleteTour = (id) => {
         ui.displayTours();
     }
 };
+document.addEventListener('DOMContentLoaded', () => {
+    const homeNav = document.getElementById('homeNav');
+    const logoutNav = document.getElementById('logoutNav');
+    
+    if (homeNav) {
+        homeNav.addEventListener('click', () => alert('Navigating to Home'));
+    }
+
+    if (logoutNav) {
+        logoutNav.addEventListener('click', () => alert('Logging out...'));
+    }
+});

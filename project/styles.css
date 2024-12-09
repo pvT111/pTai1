@@ -205,17 +205,12 @@ td {
     color: #666;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
 .form-group label {
     display: block;
     margin-bottom: 5px;
     color: #2c3e50;
     font-weight: 500;
 }
-
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -237,7 +232,7 @@ td {
     border-color: #3498db;
 }
 
-/* Image Preview */
+
 .image-preview {
     max-width: 100%;
     height: 150px;
